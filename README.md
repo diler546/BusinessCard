@@ -13,26 +13,6 @@ img/         фотографии зала и полки (7 файлов, ~800 �
 
 Открыть: двойной клик по `index.html`. Сервер не нужен.
 
-### Фотографии в `img/`
-
-Все кадры — под свободными лицензиями (CC0 / CC BY / CC BY-SA),
-ужаты до 900×900 (квадрат для галереи) и 1000×800 (полка в «О нас»),
-JPEG качество 78. Ссылки на источники проставлены на странице под галереей
-и перечислены здесь:
-
-| Файл | Что на кадре | Автор | Лицензия | Источник |
-|---|---|---|---|---|
-| `hall-big.jpg` | руки играющих, фишка на поле | Kristin Hardwick | CC0 | [StockSnap](https://stocksnap.io/photo/playing-game-TXIMMZTQ7O) |
-| `hall-two.jpg` | две чашки кофе на деревянном столе | Yam B Chhetri | CC0 | [WordPress Photos](https://wordpress.org/photos/photo/4106794d54/) |
-| `hall-shelf.jpg` | витрина с коробками игр | The Haunted Game Cafe | CC BY 2.0 | [Flickr](https://www.flickr.com/photos/35408038@N06/3949671774) |
-| `hall-tea.jpg` | стеклянный чайник, чашки, печенье | — | CC0 | [Rawpixel](https://www.rawpixel.com/image/5965297/tea-pot-and-cup-cozy-home-rustic-decor) |
-| `hall-soft.jpg` | мягкий диван у стены, столики | — | CC0 | [Rawpixel](https://www.rawpixel.com/image/3304725/free-photo-image-cafeteria-interior-cafe) |
-| `hall-stage.jpg` | шахматные доски в турнирном зале | gurdonark | CC BY 2.0 | [Flickr](https://www.flickr.com/photos/46183897@N00/6700590843) |
-| `about-shelf.jpg` | стеллаж, плотно заставленный играми | Dan4th | CC BY 2.0 | [Flickr](https://www.flickr.com/photos/43264265@N00/3346973647) |
-
-Кадры кадрировались под нужные пропорции (`object-fit: cover` в вёрстке
-оставляет ту же рамку), поэтому подменять файлы можно без правки стилей —
-важно лишь сохранить имя и пропорции.
 
 ## Что нового
 
