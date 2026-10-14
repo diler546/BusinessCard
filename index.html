@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ход за Ходом — прокат настольных игр и антикафе</title>
+<meta name="description" content="Прокат настольных игр: 418 коробок, доставка за 2 часа. Антикафе: играйте на месте, оплата за время, чай и печеньки включены.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">К основному содержанию</a>
+
+<!-- ==========================================================================
+     СПРАЙТ: все иллюстрации нарисованы вручную (только фигуры, без <image>).
+     Ссылки на них в разметке — <svg class="art"><use href="#game-catan"></use></svg>
+     ========================================================================== -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <g id="i-stroke" fill="none" class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+
+  <!-- ДЕКОР: кубик d6 -->
+  <symbol id="dec-die" viewBox="0 0 100 100">
+    <g fill="none" class="sc-ink" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="rotate(-6 50 50)">
+        <rect x="12" y="12" width="76" height="76" rx="14" fill="#f4ead6"></rect>
+        <circle cx="34" cy="34" r="7" class="fc-burg" stroke="none"></circle>
+        <circle cx="66" cy="66" r="7" class="fc-burg" stroke="none"></circle>
+        <circle cx="50" cy="50" r="7" class="fc-must" stroke="none"></circle>
+      </g>
+    </g>
+  </symbol>
+
+  <!-- ДЕКОР: фишка-пешка -->
+  <symbol id="dec-pawn" viewBox="0 0 100 100">
+    <g class="sc-ink" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M48 23c0-11 13-11 13 0 0 5-3 8-5 10 4 6 9 17 9 32H34c0-15 5-26 9-32-2-2-5-5-5-10z" class="fc-burg"></path>
+      <ellipse cx="51" cy="17" rx="11" ry="9" fill="#d89b3a"></ellipse>
+      <rect x="27" y="65" width="47" height="10" rx="4" class="fc-burg"></rect>
+      <ellipse cx="51" cy="82" rx="23" ry="9" class="fc-burg"></ellipse>
+    </g>
+  </symbol>
+
+  <!-- ДЕКОР: звезда -->
+  <symbol id="dec-star" viewBox="0 0 100 100">
+    <path d="M54 9 66 37 96 40 73 60 80 90 54 74 28 90 34 60 12 40 41 37z"
+          fill="#d89b3a" class="sc-ink" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+
+  <!-- КАТАЛОГ: Catan -->
+  <symbol id="game-catan" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 236c12-26 26-35 44-40 24-7 42 8 62 11s40-16 62-8 32 29 51 33 35-3 47 6 14 30 10 45-19 25-38 28-34-6-56-4-41 15-63 12-36-19-56-25-45-2-57-15-18-27-6-43z" fill="#e6d7b8"></path>
+    <path d="M64 232c14-20 26-27 42-31" fill="none" stroke-width="1.6" stroke="#8f7a63"></path>
+    <path d="M300 335c14 4 28 3 40-4" fill="none" stroke-width="1.6" stroke="#8f7a63"></path>
+    <path d="M156 348l9 14 9-14z" class="fc-must"></path>
+    <path d="M159.5 93 L206 120 L206 174 L159.5 201 L113 174 L113 120 Z" class="fc-must"></path>
+    <path d="M126 132c6-7 14-7 20 0-3 5-7 6-10 2" fill="none" stroke-width="1.8" stroke="#8f7a63"></path>
+    <path d="M169 168c6-10 12-10 18 0-6 8-12 8-18 0z" class="fc-paper" stroke-width="1.5"></path>
+    <path d="M177 172v6" fill="none" stroke-width="2"></path>
+    <path d="M252.5 93 L299 120 L299 174 L252.5 201 L206 174 L206 120 Z" fill="#4f7a3f"></path>
+    <path d="M222 136l0-16" fill="none" stroke-width="2.4" stroke="#3d5a3d"></path>
+    <path d="M212 128l10-14 10 14z" class="fc-sage" stroke-width="1.6"></path>
+    <path d="M266 168l0-14" fill="none" stroke-width="2.4" stroke="#3d5a3d"></path>
+    <path d="M257 160l9-13 9 13z" class="fc-sage" stroke-width="1.6"></path>
+    <path d="M240 150l1-11" fill="none" stroke-width="2" stroke="#3d5a3d"></path>
+    <path d="M159.5 177 L206 204 L206 258 L159.5 285 L113 258 L113 204 Z" fill="#c96a3a"></path>
+    <path d="M126 240h64M124 258h68" fill="none" stroke-width="6" stroke="#8b2c2c"></path>
+    <path d="M141 228v42M173 228v42" fill="none" stroke-width="2" stroke="#8b2c2c"></path>
+    <path d="M252.5 177 L299 204 L299 258 L252.5 285 L206 258 L206 204 Z" class="fc-must"></path>
+    <path d="M262 206l34 33M262 239l34-33" fill="none" stroke-width="5" class="sc-burg"></path>
+    <path d="M275 214l14 14M275 228l14-14" fill="none" stroke-width="2" stroke="#8b2c2c"></path>
+    <path d="M228 224l6-8 6 8" fill="none" stroke-width="1.8" stroke="#d89b3a"></path>
+    <path d="M206 93 L252.5 120 L252.5 174 L206 201 L159.5 174 L159.5 120 Z" fill="#c8a878"></path>
+    <path d="M172 150c0-7 9-9 10-2 1-7 10-5 10 2 0 6-9 11-10 12-1-1-10-6-10-12z" class="fc-ink" stroke-width="1.5"></path>
+    <g fill="none" stroke-width="1.5" stroke="#8f7a63"><path d="M119 165c5 4 9 10 12 16"></path><path d="M119 201c5 5 9 10 12 15"></path><path d="M198 165c5 4 9 10 12 16"></path><path d="M198 201c5 5 9 10 12 15"></path><path d="M291 165c4 4 7 10 9 16"></path></g>
+    <path d="M244 249c0-12 8-20 18-20 11 0 18 8 18 20 0 3-1 5-2 7h-32c-1-2-2-4-2-7z" class="fc-ink"></path>
+    <path d="M241 261c10-6 20-8 30-5 6 2 10 5 12 8-8 4-18 5-28 3-6-1-11-3-14-6z" class="fc-ink"></path>
+    <circle cx="256" cy="234" r="9" class="fc-ink"></circle>
+    <path d="M248 226c4-7 13-9 18-3-4 3-11 5-18 3z" class="fc-ink"></path>
+    <circle cx="259" cy="236" r="2" class="fc-paper"></circle>
+    <g fill="none" stroke-width="9" stroke="#c8a878"><path d="M149 199h17"></path><path d="M216 199h17"></path><path d="M141 159l15 9"></path><path d="M256 159l15 9"></path><path d="M141 219l15-9"></path><path d="M256 219l15-9"></path></g>
+    <g fill="none" stroke-width="1.6"><path d="M149 199h17"></path><path d="M216 199h17"></path><path d="M141 159l15 9"></path><path d="M256 159l15 9"></path><path d="M141 219l15-9"></path><path d="M256 219l15-9"></path></g>
+    <g stroke="none"><circle cx="64" cy="292" r="9" fill="#3d5a3d"></circle><circle cx="90" cy="308" r="8" fill="#4f7a3f"></circle><circle cx="63" cy="322" r="7" fill="#3d5a3d"></circle><circle cx="342" cy="86" r="9" fill="#d89b3a"></circle><circle cx="318" cy="70" r="7" fill="#8b2c2c"></circle><circle cx="356" cy="112" r="7" fill="#d89b3a"></circle><circle cx="132" cy="70" r="8" fill="#f4ead6"></circle><circle cx="110" cy="88" r="7" fill="#e6d7b8"></circle><circle cx="152" cy="60" r="6" fill="#f4ead6"></circle></g>
+    </g>
+  </symbol>
+
+  <!-- КАТАЛОГ: Codenames -->
+  <symbol id="game-codenames" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="30" y="28" width="344" height="344" rx="20" fill="#e6d7b8"></rect>
+    <rect x="38" y="36" width="328" height="328" rx="16" fill="#f4ead6"></rect>
+    <rect x="42" y="40" width="55" height="55" rx="9" fill="#b7c3a6" transform="rotate(-2 69.5 67.5)"></rect>
+    <g transform="rotate(-2 69.5 67.5)" fill="none" stroke-width="2"><path d="M54 80 L85 80"></path></g>
+    <rect x="105" y="40" width="55" height="55" rx="9" class="fc-burg" transform="rotate(1.5 132.5 67.5)"></rect>
+    <g transform="rotate(1.5 132.5 67.5)" fill="none" stroke-width="2"><path d="M117 80 L148 80"></path></g>
+    <rect x="168" y="40" width="55" height="55" rx="9" fill="#f4ead6" transform="rotate(-1 195.5 67.5)"></rect>
+    <g transform="rotate(-1 195.5 67.5)" fill="none" stroke-width="2"><path d="M180 80 L211 80"></path></g>
+    <rect x="231" y="40" width="55" height="55" rx="9" fill="#4a6fa5" transform="rotate(2 258.5 67.5)"></rect>
+    <g transform="rotate(2 258.5 67.5)" fill="none" stroke-width="2"><path d="M243 80 L274 80"></path></g>
+    <rect x="294" y="40" width="55" height="55" rx="9" fill="#b7c3a6" transform="rotate(-1.5 321.5 67.5)"></rect>
+    <g transform="rotate(-1.5 321.5 67.5)" fill="none" stroke-width="2"><path d="M306 80 L337 80"></path></g>
+    <rect x="42" y="103" width="55" height="55" rx="9" fill="#4a6fa5" transform="rotate(1 69.5 130.5)"></rect>
+    <g transform="rotate(1 69.5 130.5)" fill="none" stroke-width="2"><path d="M54 143 L85 143"></path></g>
+    <rect x="105" y="103" width="55" height="55" rx="9" class="fc-ink" transform="rotate(-2.5 132.5 130.5)"></rect>
+    <g transform="rotate(-2.5 132.5 130.5)" fill="none" stroke-width="2"><path d="M117 143 L148 143"></path></g>
+    <rect x="168" y="103" width="55" height="55" rx="9" fill="#b7c3a6" transform="rotate(1.6 195.5 130.5)"></rect>
+    <g transform="rotate(1.6 195.5 130.5)" fill="none" stroke-width="2"><path d="M180 143 L211 143"></path></g>
+    <rect x="231" y="103" width="55" height="55" rx="9" fill="#f4ead6" transform="rotate(-1 258.5 130.5)"></rect>
+    <g transform="rotate(-1 258.5 130.5)" fill="none" stroke-width="2"><path d="M243 143 L274 143"></path></g>
+    <rect x="294" y="103" width="55" height="55" rx="9" class="fc-burg" transform="rotate(2 321.5 130.5)"></rect>
+    <g transform="rotate(2 321.5 130.5)" fill="none" stroke-width="2"><path d="M306 143 L337 143"></path></g>
+    <rect x="42" y="166" width="55" height="55" rx="9" fill="#b7c3a6" transform="rotate(-1.6 69.5 193.5)"></rect>
+    <g transform="rotate(-1.6 69.5 193.5)" fill="none" stroke-width="2"><path d="M54 206 L85 206"></path></g>
+    <rect x="105" y="166" width="55" height="55" rx="9" fill="#4a6fa5" transform="rotate(1 132.5 193.5)"></rect>
+    <g transform="rotate(1 132.5 193.5)" fill="none" stroke-width="2"><path d="M117 206 L148 206"></path></g>
+    <rect x="168" y="166" width="55" height="55" rx="9" class="fc-burg" transform="rotate(-2 195.5 193.5)"></rect>
+    <g transform="rotate(-2 195.5 193.5)" fill="none" stroke-width="2"><path d="M180 206 L211 206"></path></g>
+    <rect x="231" y="166" width="55" height="55" rx="9" fill="#b7c3a6" transform="rotate(1.4 258.5 193.5)"></rect>
+    <g transform="rotate(1.4 258.5 193.5)" fill="none" stroke-width="2"><path d="M243 206 L274 206"></path></g>
+    <rect x="294" y="166" width="55" height="55" rx="9" fill="#4a6fa5" transform="rotate(-1 321.5 193.5)"></rect>
+    <g transform="rotate(-1 321.5 193.5)" fill="none" stroke-width="2"><path d="M306 206 L337 206"></path></g>
+    <rect x="42" y="229" width="55" height="55" rx="9" fill="#f4ead6" transform="rotate(2 69.5 256.5)"></rect>
+    <g transform="rotate(2 69.5 256.5)" fill="none" stroke-width="2"><path d="M54 269 L85 269"></path></g>
+    <rect x="105" y="229" width="55" height="55" rx="9" fill="#b7c3a6" transform="rotate(-1 132.5 256.5)"></rect>
+    <g transform="rotate(-1 132.5 256.5)" fill="none" stroke-width="2"><path d="M117 269 L148 269"></path></g>
+    <rect x="168" y="229" width="55" height="55" rx="9" fill="#4a6fa5" transform="rotate(1.2 195.5 256.5)"></rect>
+    <g transform="rotate(1.2 195.5 256.5)" fill="none" stroke-width="2"><path d="M180 269 L211 269"></path></g>
+    <rect x="231" y="229" width="55" height="55" rx="9" class="fc-burg" transform="rotate(-2 258.5 256.5)"></rect>
+    <g transform="rotate(-2 258.5 256.5)" fill="none" stroke-width="2"><path d="M243 269 L274 269"></path></g>
+    <rect x="294" y="229" width="55" height="55" rx="9" fill="#f4ead6" transform="rotate(1 321.5 256.5)"></rect>
+    <g transform="rotate(1 321.5 256.5)" fill="none" stroke-width="2"><path d="M306 269 L337 269"></path></g>
+    <rect x="42" y="292" width="55" height="55" rx="9" fill="#4a6fa5" transform="rotate(-1.2 69.5 319.5)"></rect>
+    <g transform="rotate(-1.2 69.5 319.5)" fill="none" stroke-width="2"><path d="M54 332 L85 332"></path></g>
+    <rect x="105" y="292" width="55" height="55" rx="9" class="fc-burg" transform="rotate(1.8 132.5 319.5)"></rect>
+    <g transform="rotate(1.8 132.5 319.5)" fill="none" stroke-width="2"><path d="M117 332 L148 332"></path></g>
+    <rect x="168" y="292" width="55" height="55" rx="9" fill="#b7c3a6" transform="rotate(-1 195.5 319.5)"></rect>
+    <g transform="rotate(-1 195.5 319.5)" fill="none" stroke-width="2"><path d="M180 332 L211 332"></path></g>
+    <rect x="231" y="292" width="55" height="55" rx="9" fill="#4a6fa5" transform="rotate(2 258.5 319.5)"></rect>
+    <g transform="rotate(2 258.5 319.5)" fill="none" stroke-width="2"><path d="M243 332 L274 332"></path></g>
+    <rect x="294" y="292" width="55" height="55" rx="9" fill="#b7c3a6" transform="rotate(-1.5 321.5 319.5)"></rect>
+    <g transform="rotate(-1.5 321.5 319.5)" fill="none" stroke-width="2"><path d="M306 332 L337 332"></path></g>
+    <g stroke-width="1.6" fill="none" stroke="#8f7a63"><path d="M300 44c8 4 14 10 18 18"></path><path d="M40 300c4 8 10 14 18 18"></path></g>
+    <g transform="rotate(-13 96 324)"><rect x="42" y="292" width="102" height="70" rx="7" class="fc-paper"></rect><g stroke="none"><rect x="50" y="300" width="12" height="12" rx="2" fill="#8b2c2c"></rect><rect x="66" y="300" width="12" height="12" rx="2" fill="#4a6fa5"></rect><rect x="82" y="300" width="12" height="12" rx="2" fill="#b7c3a6"></rect><rect x="98" y="300" width="12" height="12" rx="2" fill="#4a6fa5"></rect><rect x="114" y="300" width="12" height="12" rx="2" fill="#8b2c2c"></rect><rect x="50" y="316" width="12" height="12" rx="2" fill="#4a6fa5"></rect><rect x="66" y="316" width="12" height="12" rx="2" fill="#f4ead6"></rect><rect x="82" y="316" width="12" height="12" rx="2" fill="#8b2c2c"></rect><rect x="98" y="316" width="12" height="12" rx="2" fill="#b7c3a6"></rect><rect x="114" y="316" width="12" height="12" rx="2" fill="#4a6fa5"></rect><rect x="50" y="332" width="12" height="12" rx="2" fill="#b7c3a6"></rect><rect x="66" y="332" width="12" height="12" rx="2" fill="#4a6fa5"></rect><rect x="82" y="332" width="12" height="12" rx="2" fill="#2e2117"></rect><rect x="98" y="332" width="12" height="12" rx="2" fill="#4a6fa5"></rect><rect x="114" y="332" width="12" height="12" rx="2" fill="#8b2c2c"></rect></g><path d="M124 294l14 8" fill="none" stroke-width="1.6" stroke="#8f7a63"></path></g>
+    <circle cx="296" cy="296" r="34" fill="#f4ead6"></circle>
+    <circle cx="296" cy="296" r="27" fill="none" stroke-width="1.6" stroke="#8f7a63"></circle>
+    <path d="M296 88c-11 0-20 8-20 19" fill="none" stroke-width="4" stroke="#b7c3a6" stroke-linecap="round"></path>
+    <path d="M268 274c-11 11-12 28 0 39 11 11 28 11 39 0" fill="none" stroke-width="3" stroke="#b7c3a6"></path>
+    <path d="M319 319l34 34" fill="none" stroke-width="13" class="sc-ink"></path>
+    <path d="M319 319l34 34" fill="none" stroke-width="8" stroke="#8b2c2c"></path>
+    </g>
+  </symbol>
+
+  <!-- КАТАЛОГ: Dixit -->
+  <symbol id="game-dixit" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="rotate(-11 74 112)"><rect x="26" y="52" width="96" height="120" rx="9" fill="#f4ead6"></rect><circle cx="74" cy="112" r="33" class="fc-must"></circle><path d="M74 79v66M41 112h66" fill="none" stroke-width="2"></path><circle cx="74" cy="112" r="52" fill="none" stroke-width="1.6" stroke="#8f7a63"></circle></g>
+    <g transform="rotate(9 320 106)"><rect x="272" y="46" width="96" height="120" rx="9" fill="#f4ead6"></rect><path d="M284 100c12-20 24 14 36-4s24 12 36-4" fill="none" stroke-width="3" stroke="#4a6fa5"></path><path d="M284 120c12-20 24 14 36-4s24 12 36-4" fill="none" stroke-width="3" stroke="#b7c3a6"></path><path d="M284 140c12-20 24 14 36-4s24 12 36-4" fill="none" stroke-width="3" stroke="#d89b3a"></path></g>
+    <g transform="rotate(7 322 296)"><rect x="274" y="238" width="96" height="116" rx="9" fill="#f4ead6"></rect><path d="M290 268l32 32M322 268l-32 32" fill="none" stroke-width="5" stroke="#8b2c2c"></path><circle cx="348" cy="332" r="9" fill="#4a6fa5" stroke="none"></circle><path d="M286 250h44" fill="none" stroke-width="1.6" stroke="#8f7a63"></path></g>
+    <g transform="rotate(-8 76 294)"><rect x="26" y="240" width="96" height="114" rx="9" fill="#f4ead6"></rect><path d="M38 274c12-16 24 10 36-6s22 6 34-6" fill="none" stroke-width="3" stroke="#8b2c2c"></path><path d="M38 294c12-16 24 10 36-6s22 6 34-6" fill="none" stroke-width="3" stroke="#d89b3a"></path><circle cx="64" cy="326" r="8" class="fc-burg" stroke="none"></circle><circle cx="86" cy="330" r="6" fill="#4a6fa5" stroke="none"></circle></g>
+    <g stroke="none" fill="#d89b3a"><path d="M46 32l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"></path><path d="M356 196l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"></path><path d="M318 34l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"></path></g>
+    <ellipse cx="200" cy="360" rx="66" ry="13" class="fc-kraft"></ellipse>
+    <path d="M152 262c-14 20-20 48-19 76 1 12 18 19 67 19s66-7 67-19c1-28-5-56-19-76-30-15-66-15-96 0z" fill="#f4ead6"></path>
+    <circle cx="200" cy="246" r="44" fill="#f4ead6"></circle>
+    <circle cx="200" cy="246" r="44" fill="none" stroke-width="5" stroke="#f4ead6"></circle>
+    <path d="M144 284c10 18 24 26 34 27M256 284c-10 18-24 26-34 27" fill="none" stroke-width="2" stroke="#8f7a63"></path>
+    <path d="M152 224c-9-42-15-82 0-98 16-18 29 10 32 56 2 20 1 34-2 44z" fill="#f4ead6"></path>
+    <path d="M161 214c-6-34-11-62 0-72 9-10 17 12 19 46 1 12 1 20-1 27z" fill="#e6d7b8" stroke="none"></path>
+    <path d="M248 224c9-40 15-78 0-93-17-17-28 10-30 55-2 19-1 32 2 42z" fill="#f4ead6"></path>
+    <path d="M239 214c6-32 11-58 0-68-9-10-17 12-18 44-1 11-1 19 1 25z" fill="#e6d7b8" stroke="none"></path>
+    <ellipse cx="182" cy="262" rx="12" ry="8" fill="#e6d7b8" stroke="none" opacity="0.85"></ellipse>
+    <ellipse cx="220" cy="262" rx="12" ry="8" fill="#e6d7b8" stroke="none" opacity="0.85"></ellipse>
+    <circle cx="181" cy="242" r="6" class="fc-ink" stroke="none"></circle>
+    <circle cx="219" cy="242" r="6" class="fc-ink" stroke="none"></circle>
+    <circle cx="183" cy="240" r="2" class="fc-paper" stroke="none"></circle>
+    <circle cx="221" cy="240" r="2" class="fc-paper" stroke="none"></circle>
+    <path d="M194 254h12l-6 7z" fill="#8b2c2c" stroke="none"></path>
+    <path d="M200 261c0 4-5 8-10 6M200 261c0 4 5 8 10 6" fill="none" stroke-width="2"></path>
+    <path d="M186 278c5 5 23 5 28 0" fill="none" stroke-width="2.5"></path>
+    <g fill="none" stroke-width="1.6"><path d="M170 262h-24M170 270l-22 7"></path><path d="M230 262h24M230 270l22 7"></path></g>
+    <path d="M141 218c15-7 43-11 59-11s44 4 59 11c4 2 3 11-6 13-25 5-81 5-106 0-9-2-10-11-6-13z" fill="#8b2c2c"></path>
+    <path d="M156 207c3-42 16-72 24-85 5-9 15-13 24-12 9 0 18 5 23 14 8 14 19 43 21 84z" fill="#8b2c2c"></path>
+    <path d="M200 108c-8 20-12 60-12 98" fill="none" stroke-width="1.6" stroke="#8f7a63"></path>
+    <path d="M155 193c9-7 25-11 45-11s36 4 45 11c3 2 2 10-5 12-22 5-59 5-81 0-7-2-7-10-3-12z" fill="#6f1f1f"></path>
+    <ellipse cx="200" cy="216" rx="62" ry="12" fill="none" stroke-width="2"></ellipse>
+    </g>
+  </symbol>
+
+  <!-- КАТАЛОГ: Avalon -->
+  <symbol id="game-avalon" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="200" cy="210" rx="156" ry="150" fill="#c8a878"></ellipse>
+    <ellipse cx="200" cy="210" rx="140" ry="134" fill="none" stroke-width="2" stroke="#8f7a63"></ellipse>
+    <ellipse cx="200" cy="210" rx="112" ry="106" fill="#b7c3a6"></ellipse>
+    <circle cx="200" cy="210" r="86" class="fc-paper"></circle>
+    <circle cx="200" cy="210" r="78" fill="none" stroke-width="1.6" stroke="#8f7a63"></circle>
+    <circle cx="200" cy="210" r="32" fill="none" stroke-width="2"></circle>
+    <g fill="none" stroke-width="3" stroke="#8f7a63"><path d="M332 210 L344 210"></path><path d="M293.338 299.095 L301.823 307.581"></path><path d="M200 336 L200 348"></path><path d="M106.662 299.095 L98.1766 307.581"></path><path d="M68 210 L56 210"></path><path d="M106.662 120.905 L98.1766 112.419"></path><path d="M200 84 L200 72"></path><path d="M293.338 120.905 L301.823 112.419"></path></g>
+    <g class="sc-ink" stroke-width="2" fill="none" stroke-linecap="round"><g transform="rotate(-38 306 116)"><path d="M244 116 L362 116"></path><path d="M300 108 L300 124"></path><path d="M268 116 L300 116" stroke-width="7" stroke="#4a6fa5"></path></g><g transform="rotate(34 300 118)"><path d="M240 118 L358 118"></path><path d="M296 110 L296 126"></path><path d="M264 118 L296 118" stroke-width="7" stroke="#4a6fa5"></path></g><circle cx="266" cy="95" r="7" fill="#d89b3a" stroke-width="2"></circle><circle cx="272" cy="147" r="7" fill="#d89b3a" stroke-width="2"></circle></g>
+    <g transform="rotate(-14 300 288)"><path d="M240 226h64v40c0 25-13 40-32 48-19-8-32-23-32-48z" class="fc-burg"></path><path d="M240 258c22 7 42 7 64 0" fill="none" stroke-width="2"></path><path d="M272 228v84" fill="none" stroke-width="2"></path></g>
+    <g transform="rotate(16 112 322)"><path d="M74 276h68v42c0 26-14 42-34 50-20-8-34-24-34-50z" fill="#4a6fa5"></path><path d="M74 302c24 8 46 8 68 0" fill="none" stroke-width="2"></path><path d="M108 278v88" fill="none" stroke-width="2"></path><circle cx="108" cy="308" r="11" fill="#d89b3a" stroke="none"></circle></g>
+    <circle cx="200" cy="60" r="21" fill="#e6d7b8"></circle>
+    <circle cx="200" cy="60" r="15" class="fc-burg"></circle>
+    <path d="M200 52l7 10-7 10-7-10z" fill="#f4ead6" stroke="none"></path>
+    <circle cx="302" cy="92" r="21" fill="#e6d7b8"></circle>
+    <circle cx="302" cy="92" r="15" class="fc-must"></circle>
+    <path d="M302 84l7 10-7 10-7-10z" fill="#f4ead6" stroke="none"></path>
+    <circle cx="288" cy="306" r="21" fill="#e6d7b8"></circle>
+    <circle cx="288" cy="306" r="15" class="fc-ink"></circle>
+    <path d="M288 298l7 10-7 10-7-10z" fill="#f4ead6" stroke="none"></path>
+    <circle cx="112" cy="306" r="21" fill="#e6d7b8"></circle>
+    <circle cx="112" cy="306" r="15" class="fc-must"></circle>
+    <path d="M112 298l7 10-7 10-7-10z" fill="#f4ead6" stroke="none"></path>
+    <circle cx="100" cy="116" r="21" fill="#e6d7b8"></circle>
+    <circle cx="100" cy="116" r="15" class="fc-burg"></circle>
+    <path d="M100 108l7 10-7 10-7-10z" fill="#f4ead6" stroke="none"></path>
+    <circle cx="200" cy="358" r="21" fill="#e6d7b8"></circle>
+    <circle cx="200" cy="358" r="15" class="fc-must"></circle>
+    <path d="M200 350l7 10-7 10-7-10z" fill="#f4ead6" stroke="none"></path>
+    <g transform="rotate(-7 200 208)"><rect x="140" y="144" width="122" height="128" rx="11" fill="#f4ead6"></rect><g fill="none" stroke-width="1.8" stroke="#8f7a63"><path d="M150 158h58"></path><path d="M150 170h30"></path><path d="M150 260h80"></path><path d="M150 250h44"></path></g><path d="M156 205c17-24 58-24 76 0-18 24-59 24-76 0z" class="fc-paper"></path><circle cx="195" cy="205" r="18" fill="#4a6fa5"></circle><circle cx="195" cy="205" r="7" class="fc-ink" stroke="none"></circle><circle cx="190" cy="200" r="3" fill="#f4ead6" stroke="none"></circle><g fill="none" stroke-width="1.4" stroke="#8f7a63"><path d="M168 188l-8-9M222 188l8-9M168 222l-8 9M222 222l8 9"></path></g></g>
+    </g>
+  </symbol>
+
+  <!-- КАТАЛОГ: Ticket to Ride -->
+  <symbol id="game-ticket" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="20" y="20" width="360" height="360" rx="18" fill="#f4ead6"></rect>
+    <rect x="32" y="32" width="336" height="336" rx="12" fill="none" stroke-width="1.6" stroke="#8f7a63"></rect>
+    <path d="M52 152c22-32 62-44 96-30l-8 16c-30-10-56 2-70 26z" fill="#b7c3a6" stroke="none"></path>
+    <path d="M120 168c20-36 58-52 96-36l-8 18c-32-12-58 0-72 28z" fill="#b7c3a6" stroke="none"></path>
+    <path d="M212 96c22-34 60-42 92-28l-6 18c-28-10-54 0-70 22z" fill="#b7c3a6" stroke="none"></path>
+    <ellipse cx="316" cy="128" rx="34" ry="19" fill="#4a6fa5" opacity="0.32" stroke="none"></ellipse>
+    <ellipse cx="316" cy="128" rx="34" ry="19" fill="none" stroke-width="1.6" stroke="#8f7a63"></ellipse>
+    <path d="M96 100c16-16 40-18 56-6M180 348c20 8 44 4 60-8M232 268c14-12 34-14 48-4" fill="none" stroke-width="1.6" stroke="#8f7a63"></path>
+    <path d="M86 314 Q70 190 146 138" fill="none" stroke-width="1.6" stroke="#8f7a63" opacity="0.55"></path>
+    <path d="M146 138 Q330 168 318 306" fill="none" stroke-width="1.6" stroke="#8f7a63" opacity="0.55"></path>
+    <path d="M318 306 Q338 168 268 72" fill="none" stroke-width="1.6" stroke="#8f7a63" opacity="0.55"></path>
+    <g><g transform="rotate(-90.341 83.2222 274.667)"><rect x="71.2222" y="267.167" width="24" height="15" rx="5" fill="#8b2c2c"></rect><path d="M77.2222 267.167 L77.2222 282.167" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(-81.6561 85.5556 239.333)"><rect x="73.5556" y="231.833" width="24" height="15" rx="5" fill="#8b2c2c"></rect><path d="M79.5556 231.833 L79.5556 246.833" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(-71.1753 93 208)"><rect x="81" y="200.5" width="24" height="15" rx="5" fill="#8b2c2c"></rect><path d="M87 200.5 L87 215.5" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(-59.1843 105.556 180.667)"><rect x="93.5556" y="173.167" width="24" height="15" rx="5" fill="#8b2c2c"></rect><path d="M99.5556 173.167 L99.5556 188.167" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(-46.5316 123.222 157.333)"><rect x="111.222" y="149.833" width="24" height="15" rx="5" fill="#8b2c2c"></rect><path d="M117.222 149.833 L117.222 164.833" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g></g>
+    <g><g transform="rotate(17.598 201.889 151)"><rect x="189.889" y="143.5" width="24" height="15" rx="5" fill="#4a6fa5"></rect><path d="M195.889 143.5 L195.889 158.5" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(29.0819 246.889 170)"><rect x="234.889" y="162.5" width="24" height="15" rx="5" fill="#4a6fa5"></rect><path d="M240.889 162.5 L240.889 177.5" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(44.326 281 195)"><rect x="269" y="187.5" width="24" height="15" rx="5" fill="#4a6fa5"></rect><path d="M275 187.5 L275 202.5" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(62.396 304.222 226)"><rect x="292.222" y="218.5" width="24" height="15" rx="5" fill="#4a6fa5"></rect><path d="M298.222 218.5 L298.222 233.5" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(80.2283 316.556 263)"><rect x="304.556" y="255.5" width="24" height="15" rx="5" fill="#4a6fa5"></rect><path d="M310.556 255.5 L310.556 270.5" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g></g>
+    <g><g transform="rotate(-87.8142 322.167 261.167)"><rect x="310.167" y="253.667" width="24" height="15" rx="5" fill="#d89b3a"></rect><path d="M316.167 253.667 L316.167 268.667" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(-94.6106 321.333 218.667)"><rect x="309.333" y="211.167" width="24" height="15" rx="5" fill="#d89b3a"></rect><path d="M315.333 211.167 L315.333 226.167" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(-102.061 315.5 178.5)"><rect x="303.5" y="171" width="24" height="15" rx="5" fill="#d89b3a"></rect><path d="M309.5 171 L309.5 186" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(-109.983 304.667 140.667)"><rect x="292.667" y="133.167" width="24" height="15" rx="5" fill="#d89b3a"></rect><path d="M298.667 133.167 L298.667 148.167" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g><g transform="rotate(-118.101 288.833 105.167)"><rect x="276.833" y="97.6667" width="24" height="15" rx="5" fill="#d89b3a"></rect><path d="M282.833 97.6667 L282.833 112.667" fill="none" stroke-width="1.4" stroke="#2e2117"></path></g></g>
+    <g transform="rotate(-30 296 214)"><rect x="264" y="180" width="48" height="28" rx="6" fill="#3d5a3d"></rect><rect x="306" y="166" width="28" height="42" rx="5" class="fc-burg"></rect><rect x="264" y="180" width="30" height="11" rx="4" fill="#d89b3a"></rect><circle cx="320" cy="190" r="6" fill="#f4ead6"></circle><circle cx="278" cy="212" r="10" fill="#2e2117"></circle><circle cx="278" cy="212" r="4" fill="#d89b3a"></circle><circle cx="314" cy="212" r="10" fill="#2e2117"></circle><circle cx="314" cy="212" r="4" fill="#d89b3a"></circle><ellipse cx="260" cy="172" rx="13" ry="7" fill="#e6d7b8" stroke-width="1.6"></ellipse><ellipse cx="244" cy="160" rx="10" ry="6" fill="#e6d7b8" stroke-width="1.6"></ellipse><ellipse cx="232" cy="148" rx="7" ry="5" fill="#e6d7b8" stroke-width="1.6"></ellipse></g>
+    <circle cx="86" cy="314" r="21" fill="#e6d7b8"></circle>
+    <circle cx="86" cy="314" r="14" class="fc-must"></circle>
+    <circle cx="86" cy="314" r="4" class="fc-ink" stroke="none"></circle>
+    <circle cx="146" cy="138" r="21" fill="#e6d7b8"></circle>
+    <circle cx="146" cy="138" r="14" class="fc-burg"></circle>
+    <circle cx="146" cy="138" r="4" class="fc-ink" stroke="none"></circle>
+    <circle cx="318" cy="306" r="21" fill="#e6d7b8"></circle>
+    <circle cx="318" cy="306" r="14" fill="#4a6fa5"></circle>
+    <circle cx="318" cy="306" r="4" class="fc-ink" stroke="none"></circle>
+    <circle cx="268" cy="72" r="21" fill="#e6d7b8"></circle>
+    <circle cx="268" cy="72" r="14" class="fc-must"></circle>
+    <circle cx="268" cy="72" r="4" class="fc-ink" stroke="none"></circle>
+    <g transform="rotate(-12 338 344)"><circle cx="338" cy="344" r="20" fill="#e6d7b8"></circle><path d="M338 328l6 16-6 16-6-16z" fill="#8b2c2c"></path><path d="M338 344l6-16" fill="none" stroke-width="1.4" stroke="#8f7a63"></path></g>
+    </g>
+  </symbol>
+
+  <!-- КАТАЛОГ: Munchkin -->
+  <symbol id="game-munchkin" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="80" cy="352" rx="36" ry="12" class="fc-must"></ellipse>
+    <ellipse cx="82" cy="338" rx="36" ry="12" class="fc-must"></ellipse>
+    <ellipse cx="78" cy="324" rx="36" ry="12" class="fc-must"></ellipse>
+    <ellipse cx="80" cy="352" rx="36" ry="12" fill="none" stroke-width="1.6" stroke="#d89b3a"></ellipse>
+    <ellipse cx="82" cy="338" rx="36" ry="12" fill="none" stroke-width="1.6" stroke="#d89b3a"></ellipse>
+    <ellipse cx="78" cy="324" rx="36" ry="12" fill="none" stroke-width="1.6" stroke="#d89b3a"></ellipse>
+    <circle cx="68" cy="318" r="5" fill="#f4ead6" stroke-width="1.4"></circle>
+    <g transform="rotate(-8 130 232)"><path d="M116 190h30v42c0 14-7 22-18 22h-12z" class="fc-burg"></path><path d="M116 254h34c12 0 20 7 20 15v10h-54z" class="fc-burg"></path><path d="M116 278h54" fill="none" stroke-width="4" stroke="#2e2117"></path><path d="M118 232h26" fill="none" stroke-width="2" stroke="#6f1f1f"></path></g>
+    <g transform="rotate(9 206 244)"><path d="M192 202h30v42c0 14-7 22-18 22h-12z" class="fc-burg"></path><path d="M192 266h34c12 0 20 7 20 15v10h-54z" class="fc-burg"></path><path d="M192 290h54" fill="none" stroke-width="4" stroke="#2e2117"></path><path d="M194 244h26" fill="none" stroke-width="2" stroke="#6f1f1f"></path></g>
+    <path d="M108 124 L176 194 L168 200 L100 130 Z" fill="#f4ead6"></path>
+    <path d="M118 140 L168 190" fill="none" stroke-width="1.4" stroke="#8f7a63"></path>
+    <path d="M74 122 L106 154 M86 110 L118 142" fill="none" stroke-width="8" stroke="#d89b3a"></path>
+    <path d="M72 142 L114 108" fill="none" stroke-width="8" class="sc-burg"></path>
+    <path d="M100 155 L68 183" fill="none" stroke-width="9" class="sc-ink"></path>
+    <polygon points="68,183 60,197 50,190 58,176" class="fc-must"></polygon>
+    <path d="M172 348 L289 118 L280 108 L262 118 L96 344 Z" fill="#f4ead6"></path>
+    <path d="M200 300 L272 152" fill="none" stroke-width="1.6" stroke="#8f7a63"></path>
+    <path d="M162 292 L232 316" fill="none" stroke-width="8" stroke="#d89b3a"></path>
+    <path d="M164 304 L234 328" fill="none" stroke-width="8" stroke="#d89b3a"></path>
+    <path d="M114 302 L157 350 M124 292 L167 340" fill="none" stroke-width="7" stroke="#8b2c2c"></path>
+    <circle cx="112" cy="330" r="12" class="fc-must"></circle>
+    <circle cx="104" cy="352" r="15" fill="#8b2c2c"></circle>
+    <path d="M180 84c0-32 20-52 46-52s46 20 46 52c0 20-7 36-20 44-4 2-10 4-26 4s-22-2-26-4c-13-8-20-24-20-44z" fill="#4a6fa5"></path>
+    <path d="M228 32c-4-14 4-20 14-16-6 6-6 14-2 20-6 0-10-1-12-4z" class="fc-burg"></path>
+    <path d="M198 108c26 12 54 6 62-10l2 8c-4 18-30 30-64 22z" fill="#2e2117"></path>
+    <path d="M202 115c11 8 40 8 50-2" fill="none" stroke-width="2" stroke="#f4ead6"></path>
+    <path d="M206 122c-10 10-14 24-12 36M246 122c10 10 14 24 12 36" fill="none" stroke-width="2.5" stroke="#8f7a63"></path>
+    <path d="M208 48c12-8 30-8 42 0" fill="none" stroke-width="3" stroke="#f4ead6"></path>
+    <g transform="rotate(-4 316 100)"><rect x="248" y="34" width="134" height="132" rx="12" fill="#f4ead6"></rect><path d="M260 46h64" fill="none" stroke-width="1.8" stroke="#8f7a63"></path><path d="M260 154h54" fill="none" stroke-width="1.6" stroke="#8f7a63"></path><circle cx="280" cy="100" r="21" fill="#b7c3a6"></circle><path d="M264 90c2-14 12-22 22-20 9 2 16 10 17 20-6 8-31 8-39 0z" fill="#4a6fa5"></path><circle cx="272" cy="102" r="3" fill="#2e2117"></circle><circle cx="290" cy="102" r="3" fill="#2e2117"></circle><path d="M273 110c5 4 12 4 17 0" fill="none" stroke-width="1.8"></path><path d="M262 138c7 10 23 10 30 0" fill="none" stroke-width="2"></path><g stroke-width="1.6"><circle cx="318" cy="82" r="6" class="fc-must"></circle><circle cx="318" cy="98" r="6" class="fc-must"></circle><circle cx="318" cy="114" r="6" class="fc-must"></circle><circle cx="318" cy="130" r="6" class="fc-paper2"></circle><circle cx="336" cy="82" r="6" class="fc-must"></circle><circle cx="336" cy="98" r="6" class="fc-must"></circle><circle cx="336" cy="114" r="6" class="fc-paper2"></circle><circle cx="336" cy="130" r="6" class="fc-paper2"></circle><circle cx="354" cy="82" r="6" class="fc-paper2"></circle><circle cx="354" cy="98" r="6" class="fc-paper2"></circle><circle cx="354" cy="114" r="6" class="fc-paper2"></circle></g><path d="M318 82l12 12 22-22" fill="none" stroke-width="3.5" stroke="#3d5a3d"></path></g>
+    </g>
+  </symbol>
+
+  <!-- АНТИКАФЕ: зал для больших компаний -->
+  <symbol id="hall-big" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="14" width="372" height="372" rx="16" fill="#e6d7b8"></rect>
+      <rect x="92" y="156" width="216" height="74" rx="16" class="fc-kraft"></rect>
+      <path d="M92 193h216" fill="none"></path>
+      <rect x="116" y="176" width="66" height="40" rx="5" fill="#f4ead6" transform="rotate(-3 149 196)"></rect>
+      <path d="M128 194h44M128 204h30" fill="none" stroke-width="1.6"></path>
+      <circle cx="212" cy="188" r="11" class="fc-burg"></circle>
+      <circle cx="244" cy="206" r="11" class="fc-must"></circle>
+      <circle cx="272" cy="182" r="11" fill="#4a6fa5"></circle>
+      <rect x="112" y="234" width="13" height="62" rx="5" class="fc-kraft"></rect>
+      <rect x="276" y="234" width="13" height="62" rx="5" class="fc-kraft"></rect>
+      <g fill="#f4ead6">
+        <path d="M56 132h44v20a22 22 0 0 1-44 0z"></path>
+        <path d="M300 132h44v20a22 22 0 0 1-44 0z"></path>
+      </g>
+      <path d="M56 168v24M322 168v24" fill="none"></path>
+      <g class="fc-burg">
+        <circle cx="56" cy="150" r="13"></circle>
+        <circle cx="344" cy="150" r="13"></circle>
+      </g>
+      <g fill="#f4ead6">
+        <path d="M150 258h44v20a22 22 0 0 1-44 0z"></path>
+        <path d="M206 258h44v20a22 22 0 0 1-44 0z"></path>
+      </g>
+      <path d="M150 294v20M228 294v20" fill="none"></path>
+      <g fill="#4a6fa5">
+        <circle cx="150" cy="276" r="13"></circle>
+        <circle cx="250" cy="276" r="13"></circle>
+      </g>
+      <path d="M120 66h160M120 344h160" fill="none" stroke-width="4"></path>
+    </g>
+  </symbol>
+
+  <!-- АНТИКАФЕ: уголок для двоих -->
+  <symbol id="hall-two" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="14" width="372" height="372" rx="16" fill="#e6d7b8"></rect>
+      <rect x="118" y="206" width="164" height="16" rx="7" class="fc-must"></rect>
+      <rect x="130" y="222" width="11" height="80" rx="5" class="fc-must"></rect>
+      <rect x="258" y="222" width="11" height="80" rx="5" class="fc-must"></rect>
+      <path d="M158 178h28v22a14 14 0 0 1-28 0z" fill="#f4ead6"></path>
+      <path d="M186 184c14-2 14 14 0 14" fill="none"></path>
+      <path d="M160 148c8 8 8 14 0 20" fill="none"></path>
+      <path d="M214 178h28v22a14 14 0 0 1-28 0z" fill="#f4ead6"></path>
+      <path d="M242 184c14-2 14 14 0 14" fill="none"></path>
+      <path d="M216 152c8 8 8 14 0 20" fill="none"></path>
+      <path d="M254 120c14-4 20 14 8 22-5 4-6 8-2 12h-24c5-4 5-9 1-13-9-9-3-22 17-21z" class="fc-must"></path>
+      <path d="M262 116c-3-8 2-14 6-16" fill="none"></path>
+      <rect x="48" y="286" width="304" height="20" rx="10" fill="#b7c3a6"></rect>
+      <path d="M66 306v20M334 306v20" fill="none" stroke-width="3"></path>
+      <circle cx="86" cy="392" r="0" fill="none"></circle>
+    </g>
+  </symbol>
+
+  <!-- АНТИКАФЕ: полки с играми -->
+  <symbol id="hall-shelf" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="14" width="372" height="372" rx="16" fill="#f4ead6"></rect>
+      <rect x="46" y="44" width="308" height="312" rx="12" fill="#c8a878"></rect>
+      <g>
+        <rect x="66" y="90" width="42" height="92" rx="5" class="fc-burg"></rect>
+        <rect x="114" y="70" width="36" height="112" rx="5" fill="#4a6fa5"></rect>
+        <rect x="156" y="98" width="46" height="84" rx="5" class="fc-must"></rect>
+        <rect x="208" y="62" width="40" height="120" rx="5" fill="#b7c3a6"></rect>
+        <rect x="254" y="88" width="42" height="94" rx="5" fill="#8b2c2c"></rect>
+        <rect x="302" y="76" width="34" height="106" rx="5" fill="#d89b3a"></rect>
+      </g>
+      <rect x="60" y="182" width="280" height="12" rx="4" fill="#8f7a63"></rect>
+      <g>
+        <rect x="66" y="252" width="48" height="82" rx="5" fill="#b7c3a6"></rect>
+        <rect x="120" y="226" width="38" height="108" rx="5" fill="#8b2c2c"></rect>
+        <rect x="164" y="256" width="44" height="78" rx="5" fill="#4a6fa5"></rect>
+        <rect x="214" y="234" width="42" height="100" rx="5" fill="#d89b3a"></rect>
+        <rect x="262" y="262" width="42" height="72" rx="5" fill="#4a6fa5"></rect>
+        <rect x="310" y="240" width="30" height="94" rx="5" class="fc-must"></rect>
+      </g>
+      <rect x="60" y="334" width="280" height="12" rx="4" fill="#8f7a63"></rect>
+      <path d="M196 20v24M366 20v24" fill="none"></path>
+    </g>
+  </symbol>
+
+  <!-- АНТИКАФЕ: чайная зона -->
+  <symbol id="hall-tea" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="14" width="372" height="372" rx="16" fill="#e6d7b8"></rect>
+      <rect x="34" y="278" width="332" height="20" rx="9" class="fc-kraft"></rect>
+      <path d="M64 298v54M336 298v54" fill="none" stroke-width="4"></path>
+      <path d="M142 176h94v52a46 46 0 0 1-94 0z" class="fc-burg"></path>
+      <path d="M236 190c26-4 26 30 0 26" fill="none" stroke-width="3"></path>
+      <path d="M142 176h94" fill="none"></path>
+      <path d="M168 148c10-10 10-18 0-26" fill="none"></path>
+      <path d="M206 150c10-10 10-18 0-26" fill="none"></path>
+      <path d="M92 244h190v14a16 16 0 0 1-16 16H108a16 16 0 0 1-16-16z" fill="#8f7a63"></path>
+      <g>
+        <path d="M72 172h44v24a22 22 0 0 1-44 0z" fill="#f4ead6"></path>
+        <path d="M76 160c8-6 8-12 0-18M104 160c8-6 8-12 0-18" fill="none"></path>
+        <path d="M282 172h44v24a22 22 0 0 1-44 0z" fill="#f4ead6"></path>
+        <path d="M288 158c8-6 8-12 0-18" fill="none"></path>
+      </g>
+      <g class="fc-must">
+        <circle cx="132" cy="232" r="15"></circle>
+        <circle cx="158" cy="240" r="12"></circle>
+        <circle cx="248" cy="236" r="13"></circle>
+      </g>
+      <g class="fc-ink">
+        <circle cx="128" cy="228" r="3"></circle>
+        <circle cx="254" cy="232" r="3"></circle>
+      </g>
+    </g>
+  </symbol>
+
+  <!-- АНТИКАФЕ: мягкая зона -->
+  <symbol id="hall-soft" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="14" width="372" height="372" rx="16" fill="#e6d7b8"></rect>
+      <path d="M40 250v-52a18 18 0 0 1 18-18h172a18 18 0 0 1 18 18v52z" class="fc-burg"></path>
+      <rect x="40" y="250" width="208" height="38" rx="10" fill="#8b2c2c"></rect>
+      <rect x="42" y="206" width="44" height="34" rx="8" fill="#d89b3a"></rect>
+      <rect x="202" y="206" width="44" height="34" rx="8" fill="#d89b3a"></rect>
+      <rect x="52" y="288" width="14" height="44" rx="5" class="fc-ink"></rect>
+      <rect x="222" y="288" width="14" height="44" rx="5" class="fc-ink"></rect>
+      <path d="M148 168l-40-84h84z" class="fc-paper"></path>
+      <path d="M148 168v-30" fill="none"></path>
+      <path d="M118 104h64" fill="none" stroke-width="3"></path>
+      <path d="M276 250h66v40h-66z" class="fc-kraft"></path>
+      <path d="M290 250l14-16 14 16z" class="fc-must"></path>
+      <path d="M296 290v40M330 290v40" fill="none" stroke-width="3"></path>
+      <circle cx="120" cy="200" r="15" fill="#b7c3a6"></circle>
+      <circle cx="74" cy="204" r="11" fill="#4a6fa5"></circle>
+      <path d="M262 80v58" fill="none" stroke-width="3"></path>
+      <path d="M262 62l30 12-30 12z" class="fc-must"></path>
+    </g>
+  </symbol>
+
+  <!-- АНТИКАФЕ: сцена для турниров -->
+  <symbol id="hall-stage" viewBox="0 0 400 400">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="14" width="372" height="372" rx="16" fill="#e6d7b8"></rect>
+      <path d="M226 176h74v68h-74z" class="fc-burg"></path>
+      <path d="M300 196c30-10 30 44 0 34" fill="none" stroke-width="3"></path>
+      <path d="M226 176h74" fill="none"></path>
+      <path d="M226 244l-24 40h-30l34-40z" fill="#8f7a63"></path>
+      <path d="M268 200l-44 24" fill="none" stroke-width="3"></path>
+      <circle cx="240" cy="126" r="30" fill="#f4ead6"></circle>
+      <circle cx="240" cy="126" r="22" fill="#c8a878"></circle>
+      <path d="M240 136v-20M228 126h24" fill="none"></path>
+      <path d="M74 92h116v76H74z" fill="#f4ead6"></path>
+      <path d="M88 110h88M88 128h64M88 146h76" fill="none" stroke-width="2.5"></path>
+      <rect x="268" y="228" width="88" height="20" rx="8" class="fc-must"></rect>
+      <rect x="278" y="248" width="11" height="42" rx="5" class="fc-must"></rect>
+      <rect x="336" y="248" width="11" height="42" rx="5" class="fc-must"></rect>
+      <path d="M54 300h292" fill="none" stroke-width="4"></path>
+      <circle cx="314" cy="196" r="9" fill="#4a6fa5"></circle>
+      <circle cx="336" cy="216" r="9" fill="#b7c3a6"></circle>
+    </g>
+  </symbol>
+
+  <!-- О НАС: большая полка с играми -->
+  <symbol id="about-shelf" viewBox="0 0 400 320">
+    <g class="sc-ink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="14" width="372" height="292" rx="16" class="fc-paper2"></rect>
+      <rect x="40" y="40" width="320" height="240" rx="12" class="fc-kraft"></rect>
+
+      <!-- верхняя полка -->
+      <rect x="64" y="82" width="42" height="82" rx="4" class="fc-burg"></rect>
+      <rect x="64" y="76" width="42" height="12" rx="3" fill="#6f1f1f"></rect>
+      <rect x="112" y="62" width="36" height="102" rx="4" fill="#4a6fa5"></rect>
+      <rect x="112" y="56" width="36" height="12" rx="3" fill="#3a5a86"></rect>
+      <rect x="154" y="92" width="46" height="72" rx="4" class="fc-must"></rect>
+      <rect x="200" y="58" width="40" height="106" rx="4" fill="#b7c3a6"></rect>
+      <rect x="246" y="86" width="44" height="78" rx="4" fill="#8b2c2c"></rect>
+      <rect x="296" y="72" width="32" height="92" rx="4" class="fc-must"></rect>
+      <rect x="296" y="66" width="32" height="12" rx="3" class="fc-burg"></rect>
+      <rect x="58" y="164" width="284" height="13" rx="4" fill="#8f7a63"></rect>
+
+      <!-- средняя полка -->
+      <rect x="64" y="222" width="46" height="44" rx="4" fill="#b7c3a6"></rect>
+      <rect x="116" y="198" width="38" height="68" rx="4" class="fc-burg"></rect>
+      <rect x="160" y="226" width="42" height="40" rx="4" fill="#4a6fa5"></rect>
+      <rect x="160" y="220" width="42" height="12" rx="3" fill="#3a5a86"></rect>
+      <rect x="208" y="204" width="42" height="62" rx="4" class="fc-must"></rect>
+      <g>
+        <rect x="262" y="232" width="18" height="34" rx="3" class="fc-burg"></rect>
+        <rect x="258" y="224" width="26" height="10" rx="3" class="fc-burg"></rect>
+        <path d="M282 240c12-2 12 18 0 16" fill="none"></path>
+        <path d="M266 226c4-8 10-10 14-8" fill="none"></path>
+      </g>
+      <g>
+        <path d="M312 266h32l-4-22h-24z" fill="#c96a3a"></path>
+        <path d="M314 244c-10-14-2-28 14-26 12 2 16 12 8 24" fill="#4f7a3f"></path>
+      </g>
+      <rect x="58" y="276" width="284" height="13" rx="4" fill="#8f7a63"></rect>
+    </g>
+  </symbol>
+
+  <!-- КУБИК: все шесть граней нарисованы отдельными группами.
+       Грань выбирается атрибутом data-face на <svg>, который подключает символ:
+       внутри <use> видна только shadow-копия, поэтому прятать грани нужно
+       правилами, которые матчатся в светлом дереве (.die-face и .pip). -->
+  <symbol id="dice-faces" viewBox="0 0 120 120">
+    <ellipse cx="60" cy="112" rx="32" ry="7" fill="rgba(46,33,23,.16)"></ellipse>
+    <rect x="14" y="10" width="92" height="92" rx="20" class="dice-body"></rect>
+
+    <g class="die-face" data-f="1">
+      <circle class="pip pip-live pip--a" r="10"></circle>
+    </g>
+    <g class="die-face" data-f="2" hidden>
+      <circle class="pip pip-live pip--b" r="10"></circle>
+      <circle class="pip pip-live pip--c" r="10"></circle>
+    </g>
+    <g class="die-face" data-f="3" hidden>
+      <circle class="pip pip-live pip--b" r="10"></circle>
+      <circle class="pip pip-live pip--a" r="10"></circle>
+      <circle class="pip pip-live pip--c" r="10"></circle>
+    </g>
+    <g class="die-face" data-f="4" hidden>
+      <circle class="pip pip-live pip--b" r="10"></circle>
+      <circle class="pip pip-live pip--d" r="10"></circle>
+      <circle class="pip pip-live pip--e" r="10"></circle>
+      <circle class="pip pip-live pip--c" r="10"></circle>
+    </g>
+    <g class="die-face" data-f="5" hidden>
+      <circle class="pip pip-live pip--b" r="10"></circle>
+      <circle class="pip pip-live pip--d" r="10"></circle>
+      <circle class="pip pip-live pip--a" r="10"></circle>
+      <circle class="pip pip-live pip--e" r="10"></circle>
+      <circle class="pip pip-live pip--c" r="10"></circle>
+    </g>
+    <g class="die-face" data-f="6" hidden>
+      <circle class="pip pip-live pip--b" r="10"></circle>
+      <circle class="pip pip-live pip--d" r="10"></circle>
+      <circle class="pip pip-live pip--f" r="10"></circle>
+      <circle class="pip pip-live pip--g" r="10"></circle>
+      <circle class="pip pip-live pip--e" r="10"></circle>
+      <circle class="pip pip-live pip--c" r="10"></circle>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ============================ HEADER ============================ -->
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand__die">
+      <svg class="art" viewBox="0 0 100 100" role="img" aria-label="Кубик d6"><use href="#dec-die"></use></svg>
+    </span>
+    <span class="brand__text">
+      <strong>Ход за Ходом</strong>
+      <small>прокат настолок</small>
+    </span>
+  </a>
+
+  <nav class="cells" aria-label="Основная навигация">
+    <a class="cell is-active" href="#top" data-nav="top"><span>Старт</span></a>
+    <a class="cell" href="#services" data-nav="services"><span>Услуги</span></a>
+    <a class="cell" href="#catalog" data-nav="catalog"><span>Каталог</span></a>
+    <a class="cell" href="#anticafe" data-nav="anticafe"><span>Антикафе</span></a>
+    <a class="cell" href="#how" data-nav="how"><span>Как играем</span></a>
+    <a class="cell" href="#contacts" data-nav="contacts"><span>Контакты</span></a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="top">
+    <div class="hero__parallax" aria-hidden="true">
+      <span class="parallax parallax--1" data-depth=".16">
+        <svg class="art" viewBox="0 0 100 100"><use href="#dec-die"></use></svg>
+      </span>
+      <span class="parallax parallax--2" data-depth="-.22">
+        <svg class="art" viewBox="0 0 100 100"><use href="#dec-pawn"></use></svg>
+      </span>
+      <span class="parallax parallax--3" data-depth=".28">
+        <svg class="art" viewBox="0 0 100 100"><use href="#dec-star"></use></svg>
+      </span>
+      <span class="parallax parallax--4" data-depth="-.3">
+        <svg class="art" viewBox="0 0 100 100"><use href="#dec-die"></use></svg>
+      </span>
+      <span class="parallax parallax--5" data-depth=".42">
+        <svg class="art" viewBox="0 0 100 100"><use href="#dec-star"></use></svg>
+      </span>
+    </div>
+
+    <div class="hero__inner">
+      <p class="hero__eyebrow">настольные игры в прокат · антикафе · 418 коробок</p>
+      <h1 class="hero__title">
+        Собери друзей —
+        <span class="hero__title-accent">начни партию</span>
+      </h1>
+      <p class="hero__lead">
+        Прокат настолок на вечер, выходные или отпуск. Забирай сам
+        или жди курьера. Привезём правила в голове и гайд — в коробке.
+      </p>
+
+      <div class="hero__buttons">
+        <button class="btn btn--primary" type="button" id="roll-dice">
+          <span>Бросить кубик</span>
+          <svg class="art btn__art" viewBox="0 0 120 120" data-face="5" role="img" aria-label="Кубик"><use data-show="5" href="#dice-faces"></use></svg>
+        </button>
+        <button class="btn btn--ghost" type="button" data-open-modal data-topic="rent">Открыть коробку</button>
+      </div>
+
+      <!-- Сам кубик: показывается после броска -->
+      <div class="dice" id="dice" hidden>
+        <svg class="dice__art" id="dice-art" viewBox="0 0 120 120" data-face="1" role="img" aria-label="Бросок кубика">
+          <use href="#dice-faces"></use>
+        </svg>
+      </div>
+      <p class="dice__note" role="status" aria-live="polite" id="dice-note"></p>
+
+      <ul class="hero__facts">
+        <li data-reveal>
+          <strong class="fact"><span class="fact__num" data-count="150">0</span> ₽</strong>
+          <span>за сутки проката</span>
+        </li>
+        <li data-reveal>
+          <strong class="fact"><span class="fact__num" data-count="418">0</span></strong>
+          <span>игр на полках</span>
+        </li>
+        <li data-reveal>
+          <strong class="fact"><span class="fact__num" data-count="2">0</span> часа</strong>
+          <span>доставка по городу</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Дорожка игрового поля -->
+    <div class="field" aria-hidden="true">
+      <div class="field__track" id="field-track">
+        <button class="field__cell field__cell--start" type="button" id="pawn-cell" aria-label="Провести фишку по дорожке к услугам">
+          <span class="field__label">старт</span>
+          <svg class="pawn art" id="pawn" viewBox="0 0 100 100"><use href="#dec-pawn"></use></svg>
+        </button>
+        <span class="field__cell"><span class="field__label">услуги</span></span>
+        <span class="field__cell"><span class="field__label">каталог</span></span>
+        <span class="field__cell"><span class="field__label">антикафе</span></span>
+        <span class="field__cell field__cell--finish"><span class="field__label">финиш</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ §1 УСЛУГИ ============================ -->
+  <section class="section section--paper" id="services">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <span class="section__stamp">§ 1</span>
+        <h2>Что мы делаем</h2>
+        <p class="section__lead">Одна большая штука, три поменьше. Всё, чтобы вечер сложился.</p>
+      </header>
+
+      <div class="services">
+        <article class="service service--big" data-reveal>
+          <span class="service__tag">главное</span>
+          <h3>Прокат на 1–30 дней</h3>
+          <p>
+            Любая игра из каталога — от 150 ₽ за сутки. Бери одну,
+            бери три — на вторую и третью скидка 20%. Мыть, считать
+            компоненты и переживать о потеряшках — наша забота.
+          </p>
+          <button class="btn btn--primary" type="button" data-open-modal data-topic="rent">Забронировать</button>
+        </article>
+
+        <article class="service" data-reveal>
+          <span class="service__num">1.1</span>
+          <h3>Доставка и забор</h3>
+          <p>Привезём и заберём в пределах города. Бесплатно от двух игр на выходные.</p>
+        </article>
+
+        <article class="service" data-reveal>
+          <span class="service__num">1.2</span>
+          <h3>Помощь с правилами</h3>
+          <p>Объясним по видео или подберём игру под вашу компанию — от 2 до 10 человек.</p>
+        </article>
+
+        <article class="service" data-reveal>
+          <span class="service__num">1.3</span>
+          <h3>Игротеки по пятницам</h3>
+          <p>Собираемся в зале, играем в новинки и знакомимся. Вход свободный.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ §2 КАТАЛОГ ============================ -->
+  <section class="section" id="catalog">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <span class="section__stamp">§ 2</span>
+        <h2>Шесть игр для старта</h2>
+        <p class="section__lead">
+          Если не знаете, с чего начать — вот эти никого ещё не подводили.
+          Нажмите на карточку, чтобы развернуть описание.
+        </p>
+      </header>
+
+      <div class="hex-grid" id="catalog-grid">
+
+        <article class="game" data-game="Catan" data-reveal aria-controls="game-panel-catan">
+          <div class="game__hex">
+            <div class="game__art">
+              <svg class="art" viewBox="0 0 400 400" role="img" aria-label="Иллюстрация к игре Catan: гексы острова, дороги и разбойник"><use href="#game-catan"></use></svg>
+            </div>
+            <h3 class="game__title">Catan</h3>
+            <p class="game__meta">3–4 игрока · 60–90 мин · 10+</p>
+            <p class="game__price">250 ₽ / сутки</p>
+            <span class="game__hint" aria-hidden="true">развернуть</span>
+          </div>
+
+          <div class="game__panel" tabindex="-1" id="game-panel-catan">
+            <p class="game__desc">
+              Колонизаторы: вы осваиваете остров, добываете дерево, глину, зерно
+              и руду, торгуетесь с соседями и первым набираете 10 победных очков.
+              Правила объясняются за 15 минут, а реиграбельность почти бесконечная.
+            </p>
+            <ul class="chips">
+              <li class="chip chip--dice">кубики</li>
+              <li class="chip chip--base">базовая</li>
+              <li class="chip chip--story">торговля</li>
+              <li class="chip chip--new">для новичков</li>
+            </ul>
+            <button class="btn btn--primary" type="button" data-open-modal data-topic="rent" data-game="Catan">Забронировать</button>
+          </div>
+        </article>
+
+        <article class="game" data-game="Codenames" data-reveal aria-controls="game-panel-codenames">
+          <div class="game__hex">
+            <div class="game__art">
+              <svg class="art" viewBox="0 0 400 400" role="img" aria-label="Иллюстрация к игре Codenames: сетка карточек 5 на 5"><use href="#game-codenames"></use></svg>
+            </div>
+            <h3 class="game__title">Codenames</h3>
+            <p class="game__meta">4–8 игроков · 15 мин · 12+</p>
+            <p class="game__price">180 ₽ / сутки</p>
+            <span class="game__hint" aria-hidden="true">развернуть</span>
+          </div>
+
+          <div class="game__panel" tabindex="-1" id="game-panel-codenames">
+            <p class="game__desc">
+              Две команды ищут своих агентов на сетке из 25 слов, а капитаны
+              подсказывают одним словом и числом. Идеальная вечериночная игра:
+              партия короткая, кричать можно, а мозг работает на полную.
+            </p>
+            <ul class="chips">
+              <li class="chip chip--party">вечеринка</li>
+              <li class="chip chip--team">командная</li>
+              <li class="chip chip--words">слова</li>
+              <li class="chip chip--new">для новичков</li>
+            </ul>
+            <button class="btn btn--primary" type="button" data-open-modal data-topic="rent" data-game="Codenames">Забронировать</button>
+          </div>
+        </article>
+
+        <article class="game" data-game="Dixit" data-reveal aria-controls="game-panel-dixit">
+          <div class="game__hex">
+            <div class="game__art">
+              <svg class="art" viewBox="0 0 400 400" role="img" aria-label="Иллюстрация к игре Dixit: кролик в большой шляпе и карты с узорами"><use href="#game-dixit"></use></svg>
+            </div>
+            <h3 class="game__title">Dixit</h3>
+            <p class="game__meta">3–6 игроков · 30 мин · 8+</p>
+            <p class="game__price">200 ₽ / сутки</p>
+            <span class="game__hint" aria-hidden="true">развернуть</span>
+          </div>
+
+          <div class="game__panel" tabindex="-1" id="game-panel-dixit">
+            <p class="game__desc">
+              Ведущий загадывает ассоциацию к своей картинке, остальные ищут
+              похожую среди своих. Угадаешь у всех — останешься без очков,
+              поэтому подсказка должна быть ровно на грани.
+            </p>
+            <ul class="chips">
+              <li class="chip chip--story">ассоциации</li>
+              <li class="chip chip--party">вечеринка</li>
+              <li class="chip chip--family">для семьи</li>
+              <li class="chip chip--new">для новичков</li>
+            </ul>
+            <button class="btn btn--primary" type="button" data-open-modal data-topic="rent" data-game="Dixit">Забронировать</button>
+          </div>
+        </article>
+
+        <article class="game" data-game="Avalon" data-reveal aria-controls="game-panel-avalon">
+          <div class="game__hex">
+            <div class="game__art">
+              <svg class="art" viewBox="0 0 400 400" role="img" aria-label="Иллюстрация к игре Avalon: круглый стол, мечи, щиты и карта с глазом"><use href="#game-avalon"></use></svg>
+            </div>
+            <h3 class="game__title">Avalon</h3>
+            <p class="game__meta">5–10 игроков · 30 мин · 14+</p>
+            <p class="game__price">200 ₽ / сутки</p>
+            <span class="game__hint" aria-hidden="true">развернуть</span>
+          </div>
+
+          <div class="game__panel" tabindex="-1" id="game-panel-avalon">
+            <p class="game__desc">
+              Скрытые роли: рыцари Артура отправляют отряды на задания, а слуги
+              Мордреда тихо их проваливают. Разговоры, обвинения и логика —
+              игра для тех, кто любит спорить по делу.
+            </p>
+            <ul class="chips">
+              <li class="chip chip--deduction">дедукция</li>
+              <li class="chip chip--team">командная</li>
+              <li class="chip chip--adult">16+</li>
+              <li class="chip chip--role">скрытые роли</li>
+            </ul>
+            <button class="btn btn--primary" type="button" data-open-modal data-topic="rent" data-game="Avalon">Забронировать</button>
+          </div>
+        </article>
+
+        <article class="game" data-game="Ticket to Ride" data-reveal aria-controls="game-panel-ticket">
+          <div class="game__hex">
+            <div class="game__art">
+              <svg class="art" viewBox="0 0 400 400" role="img" aria-label="Иллюстрация к игре Ticket to Ride: вагончики соединяют города на карте"><use href="#game-ticket"></use></svg>
+            </div>
+            <h3 class="game__title">Ticket to Ride</h3>
+            <p class="game__meta">2–5 игроков · 45–60 мин · 8+</p>
+            <p class="game__price">220 ₽ / сутки</p>
+            <span class="game__hint" aria-hidden="true">развернуть</span>
+          </div>
+
+          <div class="game__panel" tabindex="-1" id="game-panel-ticket">
+            <p class="game__desc">
+              Собираете поезда и вагончики, чтобы соединить города из своих
+              маршрутных карточек. Правила простые, а вот соперники вечно
+              занимают нужный перегон — за это и любим.
+            </p>
+            <ul class="chips">
+              <li class="chip chip--strategy">стратегия</li>
+              <li class="chip chip--family">для семьи</li>
+              <li class="chip chip--base">базовая</li>
+            </ul>
+            <button class="btn btn--primary" type="button" data-open-modal data-topic="rent" data-game="Ticket to Ride">Забронировать</button>
+          </div>
+        </article>
+
+        <article class="game" data-game="Munchkin" data-reveal aria-controls="game-panel-munchkin">
+          <div class="game__hex">
+            <div class="game__art">
+              <svg class="art" viewBox="0 0 400 400" role="img" aria-label="Иллюстрация к игре Munchkin: меч, шлем, сапоги, монеты и уровень на карточке"><use href="#game-munchkin"></use></svg>
+            </div>
+            <h3 class="game__title">Munchkin</h3>
+            <p class="game__meta">3–6 игроков · 60–120 мин · 10+</p>
+            <p class="game__price">220 ₽ / сутки</p>
+            <span class="game__hint" aria-hidden="true">развернуть</span>
+          </div>
+
+          <div class="game__panel" tabindex="-1" id="game-panel-munchkin">
+            <p class="game__desc">
+              Пародия на подземелья: вы бьёте монстров, собираете шмот и
+              подставляете друзей, чтобы первым дойти до 10-го уровня.
+              Чем подлее ход — тем громче смех за столом.
+            </p>
+            <ul class="chips">
+              <li class="chip chip--party">вечеринка</li>
+              <li class="chip chip--humor">юмор</li>
+              <li class="chip chip--role">прокачка</li>
+            </ul>
+            <button class="btn btn--primary" type="button" data-open-modal data-topic="rent" data-game="Munchkin">Забронировать</button>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="catalog__note" data-reveal>
+        Нужна игра не из списка? <a href="#contacts">Напишите</a> — почти наверняка она у нас есть.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ §3 АНТИКАФЕ ============================ -->
+  <section class="section section--felt section--anticafe" id="anticafe">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <span class="section__stamp section__stamp--light">§ 3</span>
+        <h2>Не только прокат — антикафе</h2>
+        <p class="section__lead">Заходи поиграть на месте — оплата за время</p>
+      </header>
+
+      <div class="anticafe__top">
+        <div class="anticafe__about" data-reveal>
+          <ul class="rules">
+            <li><strong>3 ₽ / минута</strong> с человека — платишь только за время</li>
+            <li><strong>Чай, кофе и печеньки</strong> включены в тариф</li>
+            <li><strong>418 коробок</strong> на полках — или приноси свою игру</li>
+            <li><strong>Администратор</strong> подскажет правила и подберёт игру под компанию</li>
+          </ul>
+          <p class="anticafe__note">
+            Заходите на час после работы или оставайтесь на весь день:
+            никто не попросит освободить столик через 40 минут.
+          </p>
+        </div>
+
+        <div class="rates">
+          <article class="rate" data-reveal>
+            <h3>Час</h3>
+            <p class="rate__price">180 ₽</p>
+            <p class="rate__desc">Включая напитки. Хороший вариант, чтобы попробовать формат.</p>
+          </article>
+          <article class="rate rate--hot" data-reveal>
+            <span class="rate__badge">выгодно · −15%</span>
+            <h3>Три часа</h3>
+            <p class="rate__price">450 ₽</p>
+            <p class="rate__desc">Скидка 15% от почасовой. Обычно хватает на две большие партии.</p>
+          </article>
+          <article class="rate" data-reveal>
+            <h3>День</h3>
+            <p class="rate__price">900 ₽</p>
+            <p class="rate__desc">С 12:00 до 22:00, включая напитки и снеки. Для больших компаний.</p>
+          </article>
+        </div>
+      </div>
+
+      <h3 class="anticafe__sub" data-reveal>Как выглядит зал</h3>
+      <ul class="gallery">
+        <li class="shot" data-reveal>
+          <span class="shot__art">
+            <img src="img/hall-big.jpg" width="900" height="900" decoding="async"
+                 alt="Игроки за столом: фишка на игровом поле, вокруг руки участников">
+          </span>
+          <span class="shot__cap">зал для больших компаний</span>
+        </li>
+        <li class="shot" data-reveal>
+          <span class="shot__art">
+            <img src="img/hall-two.avif" width="900" height="900" decoding="async"
+                 alt="Две чашки кофе на деревянном столике — уголок для двоих">
+          </span>
+          <span class="shot__cap">уголок для двоих</span>
+        </li>
+        <li class="shot" data-reveal>
+          <span class="shot__art">
+            <img src="img/hall-shelf.jpg" width="900" height="900" decoding="async"
+                 alt="Стеллаж с коробками настольных игр в зале">
+          </span>
+          <span class="shot__cap">полки с играми</span>
+        </li>
+        <li class="shot" data-reveal>
+          <span class="shot__art">
+            <img src="img/hall-tea.jpg" width="900" height="900" decoding="async"
+                 alt="Стеклянный чайник с зелёным чаем, чашки и печенье на столе">
+          </span>
+          <span class="shot__cap">чайная зона</span>
+        </li>
+        <li class="shot" data-reveal>
+          <span class="shot__art">
+            <img src="img/hall-soft.jpg" width="900" height="900" decoding="async"
+                 alt="Мягкий кожаный диван у стены, рядом столики">
+          </span>
+          <span class="shot__cap">мягкая зона</span>
+        </li>
+        <li class="shot" data-reveal>
+          <span class="shot__art">
+            <img src="img/hall-stage.webp" width="900" height="900" decoding="async"
+                 alt="Шахматные доски на столах в турнирном зале">
+          </span>
+          <span class="shot__cap">уютный уголок</span>
+        </li>
+      </ul>
+      <p class="credits">
+        Фото зала: <a href="https://stocksnap.io/photo/playing-game-TXIMMZTQ7O" rel="license noopener" target="_blank">Playing Game</a> (CC0),
+        <a href="https://wordpress.org/photos/photo/4106794d54/" rel="license noopener" target="_blank">Yam B Chhetri</a> (CC0),
+        <a href="https://www.flickr.com/photos/35408038@N06/3949671774" rel="license noopener" target="_blank">The Haunted Game Cafe</a> (CC BY 2.0),
+        <a href="https://www.rawpixel.com/image/5965297/tea-pot-and-cup-cozy-home-rustic-decor" rel="license noopener" target="_blank">Rawpixel</a> (CC0),
+        <a href="https://www.rawpixel.com/image/3304725/free-photo-image-cafeteria-interior-cafe" rel="license noopener" target="_blank">Rawpixel</a> (CC0),
+        <a href="https://www.flickr.com/photos/46183897@N00/6700590843" rel="license noopener" target="_blank">gurdonark</a> (CC BY 2.0).
+      </p>
+
+      <h3 class="anticafe__sub" data-reveal>Расписание событий</h3>
+      <div class="schedule" data-reveal>
+        <table class="schedule__table">
+          <caption class="visually-hidden">Расписание регулярных событий антикафе по дням недели</caption>
+          <thead>
+            <tr>
+              <th scope="col">День</th>
+              <th scope="col">Событие</th>
+              <th scope="col">Время</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span class="when when--full">Понедельник</span><span class="when when--short">Пн</span></th>
+              <td>Открытый вечер настолок</td>
+              <td>18:00 — 22:00</td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="when when--full">Среда</span><span class="when when--short">Ср</span></th>
+              <td>Турнир по Codenames</td>
+              <td>19:00 — 22:00</td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="when when--full">Пятница</span><span class="when when--short">Пт</span></th>
+              <td>Большая игротека — все игры бесплатно</td>
+              <td>с 20:00</td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="when when--full">Суббота</span><span class="when when--short">Сб</span></th>
+              <td>Детская игротека</td>
+              <td>с 12:00</td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="when when--full">Воскресенье</span><span class="when when--short">Вс</span></th>
+              <td>Вечер медленных игр — тяжёлые стратегии</td>
+              <td>17:00 — 22:00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="anticafe__cta" data-reveal>
+        <button class="btn btn--paper" type="button" data-open-modal data-topic="cafe">Забронировать столик</button>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ §4 КАК ИГРАЕМ ============================ -->
+  <section class="section section--paper" id="how">
+    <div class="wrap">
+      <header class="section__head" data-reveal>
+        <span class="section__stamp">§ 4</span>
+        <h2>Как играем</h2>
+        <p class="section__lead">Четыре клетки — и коробка у вас дома.</p>
+      </header>
+
+      <ol class="track" id="track">
+        <li class="track__step" data-reveal>
+          <span class="track__num">1</span>
+          <h3>Выбираете</h3>
+          <p>Открываете каталог или бросаете кубик — он подскажет, с чего начать.</p>
+        </li>
+        <li class="track__step" data-reveal>
+          <span class="track__num">2</span>
+          <h3>Бронируете</h3>
+          <p>Оставляете заявку на сайте или пишете в телегу. Подтверждаем за час.</p>
+        </li>
+        <li class="track__step" data-reveal>
+          <span class="track__num">3</span>
+          <h3>Забираете</h3>
+          <p>Сами в пункте выдачи или ждёте курьера — как удобнее.</p>
+        </li>
+        <li class="track__step" data-reveal>
+          <span class="track__num">4</span>
+          <h3>Играете</h3>
+          <p>Возвращаете в срок. Если что-то потеряли — честно обсудим.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================ §5 О НАС ============================ -->
+  <section class="section" id="about">
+    <div class="wrap about">
+      <div class="about__text" data-reveal>
+        <span class="section__stamp">§ 5</span>
+        <h2>Полка, которая выросла в клуб</h2>
+        <p>
+          Мы начали с двух десятков коробок в шкафу. Сейчас — 418 игр,
+          своя игротека по пятницам и десятки постоянных гостей. Мы
+          верим: настолки — это не «для детей», а лучший повод собрать
+          тех, кого хочется видеть чаще.
+        </p>
+        <p>
+          Каждую неделю добавляем новинки, следим за релизами и держим
+          в каталоге классику — для тех, кто только начинает.
+        </p>
+      </div>
+      <div class="about__media" data-reveal>
+        <figure class="about__figure">
+          <img src="img/about-shelf.jpg" width="1000" height="800" decoding="async"
+               alt="Наша игротека: стеллажи с коробками настольных игр вдоль стены">
+          <figcaption>наша полка: 418 коробок и ни одной скучной</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ §6 КОНТАКТЫ + ЗАПИСКА ============================ -->
+  <section class="section section--felt" id="contacts">
+    <div class="wrap contacts">
+      <div class="contacts__info" data-reveal>
+        <span class="section__stamp section__stamp--light">§ 6</span>
+        <h2>Заходите на огонёк</h2>
+        <ul class="contacts__list">
+          <li><span>адрес</span><strong>ул. Примерная, 12</strong></li>
+          <li><span>телефон</span><a href="tel:+70000000000">+7 (000) 000-00-00</a></li>
+          <li><span>телега</span><a href="#">@hodzahodom</a></li>
+          <li><span>часы</span><strong>ежедневно 11:00 — 22:00</strong></li>
+        </ul>
+      </div>
+
+      <div class="note" id="note" data-reveal>
+        <span class="note__tape" aria-hidden="true"></span>
+
+        <div class="note__side note__side--front">
+          <form class="note__form" id="contact-form" novalidate>
+            <h3 class="note__title">Записка нам</h3>
+
+            <div class="field">
+              <label for="f-name">Как тебя звать</label>
+              <input type="text" id="f-name" name="name" required minlength="2" autocomplete="name">
+              <p class="field__error" data-error-for="f-name"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-phone">Телефон</label>
+              <input type="tel" id="f-phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="+7 (999) 123-45-67">
+              <p class="field__error" data-error-for="f-phone"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-topic">Что интересует</label>
+              <select id="f-topic" name="topic" required>
+                <option value="">Выберите вариант</option>
+                <option value="rent">Прокат</option>
+                <option value="cafe">Антикафе</option>
+                <option value="friday">Пятничная игротека</option>
+                <option value="other">Другое</option>
+              </select>
+              <p class="field__error" data-error-for="f-topic"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-message">Какую игру взять</label>
+              <textarea id="f-message" name="message" rows="3" required minlength="3" placeholder="Например: Codenames на субботу"></textarea>
+              <p class="field__error" data-error-for="f-message"></p>
+            </div>
+
+            <button class="btn btn--primary" type="submit">Отправить записку</button>
+            <p class="field__error note__status" role="status" aria-live="polite" id="form-note"></p>
+
+            <span class="stamp" id="note-stamp" aria-hidden="true">Отправлено!</span>
+          </form>
+        </div>
+
+        <div class="note__side note__side--back">
+          <h3 class="note__title">Спасибо!</h3>
+          <p class="note__thanks">
+            Записка улетела. Ответим в течение часа — в рабочее время
+            отвечаем быстрее, обычно минут за двадцать.
+          </p>
+          <ul class="note__mini">
+            <li>Прокат: от 150 ₽ за сутки</li>
+            <li>Антикафе: 3 ₽ за минуту</li>
+          </ul>
+          <button class="btn btn--ghost" type="button" id="note-back">Написать ещё</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div>
+      <strong>Ход за Ходом</strong>
+      <p>прокат настольных игр и антикафе</p>
+    </div>
+    <div>
+      <p><a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
+      <p><a href="mailto:hi@example.com">hi@example.com</a></p>
+    </div>
+    <p class="site-footer__copy">© 2026 · учебный проект</p>
+  </div>
+</footer>
+
+<!-- ============================ МОДАЛКА: 2 ВКЛАДКИ ============================ -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal__close" type="button" aria-label="Закрыть окно" data-close-modal>&times;</button>
+    <span class="modal__ribbon" aria-hidden="true">бронь</span>
+
+    <div class="tabs" role="tablist" aria-label="Что бронируем">
+      <button class="tab is-active" type="button" role="tab" id="tab-rent" aria-selected="true" aria-controls="panel-rent" data-tab="rent">Прокат</button>
+      <button class="tab" type="button" role="tab" id="tab-cafe" aria-selected="false" aria-controls="panel-cafe" data-tab="cafe">Антикафе</button>
+    </div>
+
+    <h2 id="modal-title">Открыть коробку</h2>
+    <p id="modal-lead">Оставь контакты — свяжемся в течение часа и подтвердим бронь.</p>
+
+    <div class="tabpanel is-active" id="panel-rent" role="tabpanel" aria-labelledby="tab-rent" tabindex="0">
+      <p class="tabpanel__note">Прокат: от 150 ₽ за сутки, доставка от двух игр — бесплатно.</p>
+      <form class="mform" id="modal-form" novalidate>
+        <input type="hidden" name="topic" id="modal-topic" value="rent">
+
+        <div class="field">
+          <label for="m-game">Игра</label>
+          <input type="text" id="m-game" name="game" placeholder="Оставь пустым — подберём сами">
+        </div>
+
+        <div class="field">
+          <label for="m-name">Имя</label>
+          <input type="text" id="m-name" name="name" required minlength="2" autocomplete="name">
+          <p class="field__error" data-error-for="m-name"></p>
+        </div>
+
+        <div class="field">
+          <label for="m-phone">Телефон</label>
+          <input type="tel" id="m-phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="+7 (999) 123-45-67">
+          <p class="field__error" data-error-for="m-phone"></p>
+        </div>
+
+        <button class="btn btn--primary" type="submit">Забронировать</button>
+        <p class="field__error note__status" role="status" aria-live="polite" id="modal-note"></p>
+      </form>
+    </div>
+
+    <div class="tabpanel" id="panel-cafe" role="tabpanel" aria-labelledby="tab-cafe" tabindex="0" hidden>
+      <p class="tabpanel__note">Столик держим 20 минут. 3 ₽ за минуту с человека, напитки включены.</p>
+      <form class="mform" id="cafe-form" novalidate>
+        <input type="hidden" name="topic" id="cafe-topic" value="cafe">
+
+        <div class="field">
+          <label for="c-name">Имя</label>
+          <input type="text" id="c-name" name="name" required minlength="2" autocomplete="name">
+          <p class="field__error" data-error-for="c-name"></p>
+        </div>
+
+        <div class="field">
+          <label for="c-phone">Телефон</label>
+          <input type="tel" id="c-phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="+7 (999) 123-45-67">
+          <p class="field__error" data-error-for="c-phone"></p>
+        </div>
+
+        <div class="field">
+          <label for="c-when">Когда придёте</label>
+          <input type="text" id="c-when" name="visit" placeholder="Например: суббота, к 19:00">
+        </div>
+
+        <div class="field">
+          <label for="c-people">Сколько вас</label>
+          <input type="number" id="c-people" name="people" min="1" max="40" step="1" placeholder="4">
+        </div>
+
+        <button class="btn btn--primary" type="submit">Забронировать столик</button>
+        <p class="field__error note__status" role="status" aria-live="polite" id="cafe-note"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
